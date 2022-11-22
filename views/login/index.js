@@ -9,11 +9,9 @@ form. addEventListener('submit', async e => {
     try {
         const email = emailInput.value;
         const password = passwordInput.value;
-        const {data: credentials} = await axios.post('http://localhost:3003/api/login',{email, password});
-        console.log(credentials);
+        const {data: credentials} = await axios.post('/api/login',{email, password});
         window.location.replace(`/app/${credentials.userId}`);
         
-
     } catch (error) {
         const p = document.createElement('p');
         p.innerHTML = error.response.data.error;
